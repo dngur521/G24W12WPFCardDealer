@@ -1,27 +1,18 @@
-﻿using System.Reflection.Emit;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
+﻿using System.Windows;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace G24W12WPFCardDealer
-{
+namespace G24W12WPFCardDealer {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : Window {
+        //카드 갯수
         private const int CardCount = 5;
 
         // 배열에 쓰일 상수
         private const int value = 0;
         private const int suit  = 1;
+
         public MainWindow() {
             InitializeComponent();
         }
@@ -54,27 +45,22 @@ namespace G24W12WPFCardDealer
             return spltstr;
         }
 
-        private void OnDeal(object sender, RoutedEventArgs e)
-        {
-            //BitmapImage image = new BitmapImage(
-            //    new Uri("Images/2_of_clubs.png", UriKind.Relative)
-            //    );
-            //Card1.Source = image;
+        private void OnDeal(object sender, RoutedEventArgs e) {
             // 정렬 순서 정해주기
             var customOrder = new List<string> {
-                    "ace_of_spades",    "ace_of_diamonds",    "ace_of_hearts",    "ace_of_clubs",
-                    "2_of_spades",      "2_of_diamonds",      "2_of_hearts",      "2_of_clubs",
-                    "3_of_spades",      "3_of_diamonds",      "3_of_hearts",      "3_of_clubs",
-                    "4_of_spades",      "4_of_diamonds",      "4_of_hearts",      "4_of_clubs",
-                    "5_of_spades",      "5_of_diamonds",      "5_of_hearts",      "5_of_clubs",
-                    "6_of_spades",      "6_of_diamonds",      "6_of_hearts",      "6_of_clubs",
-                    "7_of_spades",      "7_of_diamonds",      "7_of_hearts",      "7_of_clubs",
-                    "8_of_spades",      "8_of_diamonds",      "8_of_hearts",      "8_of_clubs",
-                    "9_of_spades",      "9_of_diamonds",      "9_of_hearts",      "9_of_clubs",
-                    "10_of_spades",     "10_of_diamonds",     "10_of_hearts",     "10_of_clubs",
-                    "jack_of_spades2",  "jack_of_diamonds2",  "jack_of_hearts2",  "jack_of_clubs2",
-                    "queen_of_spades2", "queen_of_diamonds2", "queen_of_hearts2", "queen_of_clubs2",
-                    "king_of_spades2",  "king_of_diamonds2",  "king_of_hearts2",  "king_of_clubs2" };
+                "ace_of_spades",    "ace_of_diamonds",    "ace_of_hearts",    "ace_of_clubs",
+                "2_of_spades",      "2_of_diamonds",      "2_of_hearts",      "2_of_clubs",
+                "3_of_spades",      "3_of_diamonds",      "3_of_hearts",      "3_of_clubs",
+                "4_of_spades",      "4_of_diamonds",      "4_of_hearts",      "4_of_clubs",
+                "5_of_spades",      "5_of_diamonds",      "5_of_hearts",      "5_of_clubs",
+                "6_of_spades",      "6_of_diamonds",      "6_of_hearts",      "6_of_clubs",
+                "7_of_spades",      "7_of_diamonds",      "7_of_hearts",      "7_of_clubs",
+                "8_of_spades",      "8_of_diamonds",      "8_of_hearts",      "8_of_clubs",
+                "9_of_spades",      "9_of_diamonds",      "9_of_hearts",      "9_of_clubs",
+                "10_of_spades",     "10_of_diamonds",     "10_of_hearts",     "10_of_clubs",
+                "jack_of_spades2",  "jack_of_diamonds2",  "jack_of_hearts2",  "jack_of_clubs2",
+                "queen_of_spades2", "queen_of_diamonds2", "queen_of_hearts2", "queen_of_clubs2",
+                "king_of_spades2",  "king_of_diamonds2",  "king_of_hearts2",  "king_of_clubs2" };
 
             var comparer = new CardComparer(customOrder);
             var cardSet  = new SortedSet<string>(comparer);
@@ -98,26 +84,26 @@ namespace G24W12WPFCardDealer
             BitmapImage image1 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card1.Source = image1;
             index++;
-            string[] card1arr = GetSplit(cardList, index);
+            string[] card1arr  = GetSplit(cardList, index);
 
             BitmapImage image2 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card2.Source = image2;
             index++;
-            string[] card2arr = GetSplit(cardList, index);
+            string[] card2arr  = GetSplit(cardList, index);
 
             BitmapImage image3 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card3.Source = image3;
             index++;
-            string[] card3arr = GetSplit(cardList, index);
+            string[] card3arr  = GetSplit(cardList, index);
 
             BitmapImage image4 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card4.Source = image4;
             index++;
-            string[] card4arr = GetSplit(cardList, index);
+            string[] card4arr  = GetSplit(cardList, index);
 
             BitmapImage image5 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card5.Source = image5;
-            string[] card5arr = GetSplit(cardList, index);
+            string[] card5arr  = GetSplit(cardList, index);
 
             // 족보 알아내기 위한 준비작업
             string[][] cardsarr = [card1arr, card2arr, card3arr, card4arr, card5arr];
@@ -258,8 +244,6 @@ namespace G24W12WPFCardDealer
                     label1.Content = "플러쉬";
             }
         }
-
-
 
         // ChatGPT 참고해서 만든 Class
         public class CardComparer : IComparer<string> {
