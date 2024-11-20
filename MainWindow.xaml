@@ -5,19 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:G24W12WPFCardDealer"
         mc:Ignorable="d"
-        Title="카드 딜러" Height="600" Width="800">
+        Title="카드 딜러" Height="450" Width="800">
     <DockPanel>
         <Button 
             DockPanel.Dock="Bottom" 
             x:Name="BtnDeal"
-            Content="카드 분배"
             Padding="8"
-            Margin="16" Click="OnDeal"/>
-        <Image 
-            x:Name="Card1" 
-            Height="400"
-            Source="https://picsum.photos/400/400"/>
+            Margin="16" 
+            Click="OnDeal">
+            <Label
+                x:Name="label1" 
+                Width="262" 
+                Content="클릭해주세요" 
+                FontSize="20"
+                Height="45" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center"/>
+        </Button>
         
-        
+        <UniformGrid 
+            Rows="1"
+            Background="#040">
+            <Image x:Name="Card1"
+               Stretch="None"
+               Source="Images/black_joker.png"/>
+            <Image x:Name="Card2"
+               Stretch="None"
+               Source="Images/black_joker.png"/>
+            <Image x:Name="Card3"
+               Stretch="None"
+               Source="Images/black_joker.png"/>
+            <Image x:Name="Card4"
+               Stretch="None"
+               Source="Images/black_joker.png"/>
+            <Image x:Name="Card5"
+               Stretch="None"
+               Source="Images/black_joker.png"/>
+        </UniformGrid>
+
     </DockPanel>
 </Window>

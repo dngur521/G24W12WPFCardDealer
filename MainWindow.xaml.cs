@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection.Emit;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -79,8 +80,7 @@ namespace G24W12WPFCardDealer
             var cardSet  = new SortedSet<string>(comparer);
 
             // 중복 없이 카드 만들기
-            while (cardSet.Count < CardCount)
-            {
+            while (cardSet.Count < CardCount) {
                 string value = GenerateValue();
                 string suit  = GenerateSuit();
 
@@ -95,12 +95,171 @@ namespace G24W12WPFCardDealer
             // 각 string에 맞는 이미지 지정
             int index = 0;
 
-            BitmapImage image = new BitmapImage(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
-            Card1.Source = image;
+            BitmapImage image1 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
+            Card1.Source = image1;
             index++;
             string[] card1arr = GetSplit(cardList, index);
-            //TODO: 카드 4장 더 추가하기
+
+            BitmapImage image2 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
+            Card2.Source = image2;
+            index++;
+            string[] card2arr = GetSplit(cardList, index);
+
+            BitmapImage image3 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
+            Card3.Source = image3;
+            index++;
+            string[] card3arr = GetSplit(cardList, index);
+
+            BitmapImage image4 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
+            Card4.Source = image4;
+            index++;
+            string[] card4arr = GetSplit(cardList, index);
+
+            BitmapImage image5 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
+            Card5.Source = image5;
+            string[] card5arr = GetSplit(cardList, index);
+
+            // 족보 알아내기 위한 준비작업
+            string[][] cardsarr = [card1arr, card2arr, card3arr, card4arr, card5arr];
+
+            string[] cardsvalue = [cardsarr[0][value],
+                                   cardsarr[1][value],
+                                   cardsarr[2][value],
+                                   cardsarr[3][value],
+                                   cardsarr[4][value]];
+
+            string[] cardssuit  = [cardsarr[0][suit],
+                                   cardsarr[1][suit],
+                                   cardsarr[2][suit],
+                                   cardsarr[3][suit],
+                                   cardsarr[4][suit]];
+
+            // 이 아래부터 족보 알아내는 코드들
+            Dictionary<string, int> valueCounts = [];
+
+            foreach (var value in cardsvalue) {
+                if (valueCounts.ContainsKey(value))
+                    valueCounts[value]++;
+                else
+                    valueCounts[value] = 1;
+            }
+
+            int pairs   = 0;
+            int triples = 0;
+            int quads   = 0;
+
+            foreach (var count in valueCounts.Values) {
+                if (count == 2) {
+                    pairs++;
+                    if (count == 4)
+                        pairs++;
+                }
+                else if (count == 3)
+                    triples++;
+                else if (count == 4)
+                    quads++;
+            }
+
+            bool straight      = false;
+            bool backstraight  = false;
+            bool royalstraight = false;
+
+            if (pairs == 1 && triples == 0)
+                label1.Content = "원페어";
+            else if (pairs == 2)
+                label1.Content = "투페어";
+            else if (triples == 1 && pairs == 0)
+                label1.Content = "트리플";
+            else if (triples == 1 && pairs == 1)
+                label1.Content = "풀하우스";
+            else if (quads   == 1)
+                label1.Content = "포카드";
+            else if (cardsvalue[0] == "ace"   &&
+                     cardsvalue[1] == "10"    &&
+                     cardsvalue[2] == "jack"  &&
+                     cardsvalue[3] == "queen" &&
+                     cardsvalue[4] == "king")
+                label1.Content = "마운틴";
+            else if (cardsvalue[0] == "9"     &&
+                     cardsvalue[1] == "10"    &&
+                     cardsvalue[2] == "jack"  &&
+                     cardsvalue[3] == "queen" &&
+                     cardsvalue[4] == "king")
+                label1.Content = "스트레이트";
+            else if (cardsvalue[0] == "8"    &&
+                     cardsvalue[1] == "9"    &&
+                     cardsvalue[2] == "10"   &&
+                     cardsvalue[3] == "jack" &&
+                     cardsvalue[4] == "queen")
+                label1.Content = "스트레이트";
+            else if (cardsvalue[0] == "7"  &&
+                     cardsvalue[1] == "8"  &&
+                     cardsvalue[2] == "9"  &&
+                     cardsvalue[3] == "10" &&
+                     cardsvalue[4] == "jack")
+                label1.Content = "스트레이트";
+            else if (cardsvalue[0] == "6" &&
+                     cardsvalue[1] == "7" &&
+                     cardsvalue[2] == "8" &&
+                     cardsvalue[3] == "9" &&
+                     cardsvalue[4] == "10")
+                label1.Content = "스트레이트";
+            else if (cardsvalue[0] == "5" &&
+                     cardsvalue[1] == "6" &&
+                     cardsvalue[2] == "7" &&
+                     cardsvalue[3] == "8" &&
+                     cardsvalue[4] == "9")
+                label1.Content = "스트레이트";
+            else if (cardsvalue[0] == "4" &&
+                     cardsvalue[1] == "5" &&
+                     cardsvalue[2] == "6" &&
+                     cardsvalue[3] == "7" &&
+                     cardsvalue[4] == "8")
+                label1.Content = "스트레이트";
+            else if (cardsvalue[0] == "3" &&
+                     cardsvalue[1] == "4" &&
+                     cardsvalue[2] == "5" &&
+                     cardsvalue[3] == "6" &&
+                     cardsvalue[4] == "7")
+                label1.Content = "스트레이트";
+            else if (cardsvalue[0] == "2" &&
+                     cardsvalue[1] == "3" &&
+                     cardsvalue[2] == "4" &&
+                     cardsvalue[3] == "5" &&
+                     cardsvalue[4] == "6")
+                label1.Content = "스트레이트";
+            else if (cardsvalue[0] == "ace" &&
+                     cardsvalue[1] == "2"   &&
+                     cardsvalue[2] == "3"   &&
+                     cardsvalue[3] == "4"   &&
+                     cardsvalue[4] == "5")
+                label1.Content = "백스트레이트";
+            else
+                label1.Content = "기타";
+            if (label1.Content as string      == "스트레이트")
+                straight = true;
+            else if (label1.Content as string == "마운틴")
+                royalstraight = true;
+            else if (label1.Content as string == "백스트레이트")
+                backstraight  = true;
+
+            if ((cardssuit[0] == cardssuit[1]) &&
+                (cardssuit[1] == cardssuit[2]) &&
+                (cardssuit[2] == cardssuit[3]) &&
+                (cardssuit[3] == cardssuit[4]) &&
+                (cardssuit[4] == cardssuit[0])) {
+                if (straight == true)
+                    label1.Content = "스트레이트 플러쉬";
+                else if (royalstraight == true)
+                    label1.Content = "로얄스트레이트 플러쉬";
+                else if (backstraight  == true)
+                    label1.Content = "백스트레이트 플러쉬";
+                else
+                    label1.Content = "플러쉬";
+            }
         }
+
+
 
         // ChatGPT 참고해서 만든 Class
         public class CardComparer : IComparer<string> {
