@@ -172,52 +172,52 @@ namespace G24W12WPFCardDealer {
                      cardsvalue[3] == "queen" &&
                      cardsvalue[4] == "king")
                 label1.Content = "스트레이트";
-            else if (cardsvalue[0] == "8"    &&
-                     cardsvalue[1] == "9"    &&
-                     cardsvalue[2] == "10"   &&
-                     cardsvalue[3] == "jack" &&
+            else if (cardsvalue[0] == "8"     &&
+                     cardsvalue[1] == "9"     &&
+                     cardsvalue[2] == "10"    &&
+                     cardsvalue[3] == "jack"  &&
                      cardsvalue[4] == "queen")
                 label1.Content = "스트레이트";
-            else if (cardsvalue[0] == "7"  &&
-                     cardsvalue[1] == "8"  &&
-                     cardsvalue[2] == "9"  &&
-                     cardsvalue[3] == "10" &&
+            else if (cardsvalue[0] == "7"     &&
+                     cardsvalue[1] == "8"     &&
+                     cardsvalue[2] == "9"     &&
+                     cardsvalue[3] == "10"    &&
                      cardsvalue[4] == "jack")
                 label1.Content = "스트레이트";
-            else if (cardsvalue[0] == "6" &&
-                     cardsvalue[1] == "7" &&
-                     cardsvalue[2] == "8" &&
-                     cardsvalue[3] == "9" &&
+            else if (cardsvalue[0] == "6"     &&
+                     cardsvalue[1] == "7"     &&
+                     cardsvalue[2] == "8"     &&
+                     cardsvalue[3] == "9"     &&
                      cardsvalue[4] == "10")
                 label1.Content = "스트레이트";
-            else if (cardsvalue[0] == "5" &&
-                     cardsvalue[1] == "6" &&
-                     cardsvalue[2] == "7" &&
-                     cardsvalue[3] == "8" &&
+            else if (cardsvalue[0] == "5"     &&
+                     cardsvalue[1] == "6"     &&
+                     cardsvalue[2] == "7"     &&
+                     cardsvalue[3] == "8"     &&
                      cardsvalue[4] == "9")
                 label1.Content = "스트레이트";
-            else if (cardsvalue[0] == "4" &&
-                     cardsvalue[1] == "5" &&
-                     cardsvalue[2] == "6" &&
-                     cardsvalue[3] == "7" &&
+            else if (cardsvalue[0] == "4"     &&
+                     cardsvalue[1] == "5"     &&
+                     cardsvalue[2] == "6"     &&
+                     cardsvalue[3] == "7"     &&
                      cardsvalue[4] == "8")
                 label1.Content = "스트레이트";
-            else if (cardsvalue[0] == "3" &&
-                     cardsvalue[1] == "4" &&
-                     cardsvalue[2] == "5" &&
-                     cardsvalue[3] == "6" &&
+            else if (cardsvalue[0] == "3"     &&
+                     cardsvalue[1] == "4"     &&
+                     cardsvalue[2] == "5"     &&
+                     cardsvalue[3] == "6"     &&
                      cardsvalue[4] == "7")
                 label1.Content = "스트레이트";
-            else if (cardsvalue[0] == "2" &&
-                     cardsvalue[1] == "3" &&
-                     cardsvalue[2] == "4" &&
-                     cardsvalue[3] == "5" &&
+            else if (cardsvalue[0] == "2"     &&
+                     cardsvalue[1] == "3"     &&
+                     cardsvalue[2] == "4"     &&
+                     cardsvalue[3] == "5"     &&
                      cardsvalue[4] == "6")
                 label1.Content = "스트레이트";
-            else if (cardsvalue[0] == "ace" &&
-                     cardsvalue[1] == "2"   &&
-                     cardsvalue[2] == "3"   &&
-                     cardsvalue[3] == "4"   &&
+            else if (cardsvalue[0] == "ace"   &&
+                     cardsvalue[1] == "2"     &&
+                     cardsvalue[2] == "3"     &&
+                     cardsvalue[3] == "4"     &&
                      cardsvalue[4] == "5")
                 label1.Content = "백스트레이트";
             else
