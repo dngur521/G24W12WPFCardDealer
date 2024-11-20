@@ -235,7 +235,7 @@ namespace G24W12WPFCardDealer
                      cardsvalue[4] == "5")
                 label1.Content = "백스트레이트";
             else
-                label1.Content = "기타";
+                label1.Content = "노페어";
             if (label1.Content as string      == "스트레이트")
                 straight = true;
             else if (label1.Content as string == "마운틴")
