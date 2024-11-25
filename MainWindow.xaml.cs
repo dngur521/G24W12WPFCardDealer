@@ -83,23 +83,23 @@ namespace G24W12WPFCardDealer {
 
             BitmapImage image1 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card1.Source = image1;
-            index++;
             string[] card1arr  = GetSplit(cardList, index);
+            index++;
 
             BitmapImage image2 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card2.Source = image2;
-            index++;
             string[] card2arr  = GetSplit(cardList, index);
+            index++;
 
             BitmapImage image3 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card3.Source = image3;
-            index++;
             string[] card3arr  = GetSplit(cardList, index);
+            index++;
 
             BitmapImage image4 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card4.Source = image4;
-            index++;
             string[] card4arr  = GetSplit(cardList, index);
+            index++;
 
             BitmapImage image5 = new(new Uri($"Images/{cardList[index]}.png", UriKind.Relative));
             Card5.Source = image5;
@@ -145,7 +145,6 @@ namespace G24W12WPFCardDealer {
                 else if (count == 4)
                     quads++;
             }
-
             bool straight      = false;
             bool backstraight  = false;
             bool royalstraight = false;
@@ -160,6 +159,7 @@ namespace G24W12WPFCardDealer {
                 label1.Content = "풀하우스";
             else if (quads   == 1)
                 label1.Content = "포카드";
+
             else if (cardsvalue[0] == "ace"   &&
                      cardsvalue[1] == "10"    &&
                      cardsvalue[2] == "jack"  &&
