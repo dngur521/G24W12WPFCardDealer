@@ -2,9 +2,6 @@
 using System.Windows.Media.Imaging;
 
 namespace G24W12WPFCardDealer {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window {
         //카드 갯수
         private const int CardCount = 5;
